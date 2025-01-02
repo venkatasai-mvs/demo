@@ -2,16 +2,16 @@ locals {
   hash = md5("${var.bucket}/${var.key}")
 }
 
-module "temporary_directory" {
-  path   = "${path.root}/.tmp/${local.hash}"
-  source = "../../mkdir"
-}
+# module "temporary_directory" {
+#   path   = "${path.root}/.tmp/${local.hash}"
+#   source = "../../mkdir"
+# }
 
-locals {
-  file          = "${module.temporary_directory.path}/${local.key[length(local.key) - 1]}"
-  key           = split("/", var.key)
-  bucket_folder = join("/", slice(local.key, 0, length(local.key) - 1))
-}
+# locals {
+#   file          = "${module.temporary_directory.path}/${local.key[length(local.key) - 1]}"
+#   key           = split("/", var.key)
+#   bucket_folder = join("/", slice(local.key, 0, length(local.key) - 1))
+# }
 
 module "s3_bucket_object" {
   source  = "../../powershell-command"

@@ -70,15 +70,15 @@ variable "kms" {
 }
 
 # Do we have plans to replicate this bucket
-variable "replication" {
-  type    = bool
-  default = true
-}
+# variable "replication" {
+#   type    = bool
+#   default = true
+# }
 
-variable "deployment" {
-  type    = any
-  default = null
-}
+# variable "deployment" {
+#   type    = any
+#   default = null
+# }
 
 variable "role_global_name" {
   type    = string

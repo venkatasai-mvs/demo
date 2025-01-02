@@ -3,18 +3,18 @@ module "temporary_directory" {
   source = "../../mkdir"
 }
 
-locals {
-  key = split("/", var.key)
-  directory = var.file != null ? join(
-    "/", [
-      module.temporary_directory.path,
-      md5(var.file),
-    ]) : join(
-    "/", [
-      module.temporary_directory.path,
-      md5(var.content)
-  ])
-}
+# # locals {
+# #   key = split("/", var.key)
+# #   directory = var.file != null ? join(
+# #     "/", [
+# #       module.temporary_directory.path,
+# #       md5(var.file),
+# #     ]) : join(
+# #     "/", [
+# #       module.temporary_directory.path,
+# #       md5(var.content)
+#   ])
+# }
 
 module "content" {
   count  = var.content != null ? 1 : 0
